@@ -45,7 +45,7 @@ jobs:
           username: tjwaterman99
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Upload to Dockerhub
-        if: "github.ref == 'ref/head/master'"
+        if: "github.ref == 'ref/head/main'"
         run: docker push $IMAGE_ID:$VERSION
 
   upload-to-github:
@@ -77,6 +77,6 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Upload to registry
-        if: "github.ref == 'ref/head/master'"
+        if: "github.ref == 'ref/head/main'"
         run: |
           docker push $IMAGE_ID:$VERSION
