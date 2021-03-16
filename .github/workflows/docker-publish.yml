@@ -39,7 +39,11 @@ jobs:
           echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u tjwaterman99 --password-stdin
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: tjwaterman99
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Upload to Dockerhub
         if: "github.ref == 'ref/head/master'"
         run: docker push $IMAGE_ID:$VERSION
