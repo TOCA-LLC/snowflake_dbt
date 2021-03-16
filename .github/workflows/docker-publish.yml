@@ -39,9 +39,10 @@ jobs:
           echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u tjwaterman99 --password-stdin
       - name: Upload to Dockerhub
         if: "github.ref == 'ref/head/master'"
-        run: echo "Not implemented"
+        run: docker push $IMAGE_ID:$VERSION
 
   upload-to-github:
     name: Upload to Github
@@ -70,8 +71,8 @@ jobs:
           echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Upload to registry
         if: "github.ref == 'ref/head/master'"
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
           docker push $IMAGE_ID:$VERSION
