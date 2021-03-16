@@ -76,7 +76,9 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+      - name: echo ref
+        run: echo "${{ github.ref }}"
       - name: Upload to registry
-        if: github.ref == 'refs/head/main'
+        if: ${{ github.ref == 'refs/head/main' }}
         run: |
           docker push $IMAGE_ID:$VERSION
