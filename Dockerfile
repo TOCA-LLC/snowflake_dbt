@@ -13,6 +13,6 @@ RUN rpm -i snowflake-snowsql-1.2.24-1.x86_64.rpm
 COPY requirements.txt requirements.txt
 
 # Install requirements.txt
-RUN pip install -r rquirements.txt
+RUN pip install -r requirements.txt
 
 CMD ["/bin/bash"]
