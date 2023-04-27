@@ -1,0 +1,5 @@
+dbt-snowflake==1.2.0
+snowflake-connector-python==2.7.9
+typing-extensions>=4.3.0 # https://github.com/snowflakedb/snowflake-connector-python/issues/1206#issuecomment-1195115883
+montecarlodata==0.34.2
+pycarlo==0.4.0

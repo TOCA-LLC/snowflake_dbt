@@ -7,7 +7,7 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     container: 
-      image: docker.pkg.github.com/tjwaterman99/snowflake_dbt/snowflake_dbt:latest
+      image: docker.pkg.github.com/shiv-io/snowflake_dbt/snowflake_dbt:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }} 
