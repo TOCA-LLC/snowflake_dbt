@@ -1,4 +1,4 @@
-An image for running dbt ci builds.
+An image for running dbt CI builds.
 
 To use it in Github actions, specify the `container` tag in your workflow.
 
